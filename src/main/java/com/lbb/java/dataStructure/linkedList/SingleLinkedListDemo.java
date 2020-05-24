@@ -19,6 +19,7 @@ public class SingleLinkedListDemo {
         singleLinkedList.addByOrder(node4);
         singleLinkedList.addByOrder(node3);
         singleLinkedList.addByOrder(node2);
+        System.out.println("有效节点数： "+singleLinkedList.getSize());
 //        System.out.println("--------更新前------------");
 //        singleLinkedList.list();
 //        HeroNode node5 =new HeroNode(8,"李悦","副班长2");
@@ -33,6 +34,8 @@ public class SingleLinkedListDemo {
         System.out.println("删除后----------------");
         singleLinkedList.delete(4);
         singleLinkedList.list();
+
+        System.out.println("有效节点数： "+singleLinkedList.getSize());
     }
 
 }

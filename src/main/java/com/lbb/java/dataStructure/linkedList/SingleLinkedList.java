@@ -1,5 +1,7 @@
 package com.lbb.java.dataStructure.linkedList;
 
+import java.util.Stack;
+
 /**
  * @Author libingbing
  * @Date 2020-05-24 10:24
@@ -9,6 +11,10 @@ public class SingleLinkedList {
 
     //初始化一个头节点
     private HeroNode head = new HeroNode(0, "", "");
+
+    public HeroNode getHead() {
+        return head;
+    }
 
     //添加一个节点，默认
     public void add(HeroNode node) {
@@ -123,6 +129,96 @@ public class SingleLinkedList {
             }
             System.out.println(temp);
             temp = temp.next;
+        }
+
+    }
+
+    //判断单链表节点个数(去除头节点哦)
+    public int getSize() {
+        HeroNode temp = head;
+        int size = 0;
+        while (true) {
+            if (temp.next == null) {
+                break;
+            }
+            size++;
+            temp = temp.next;
+        }
+        return size;
+    }
+
+    //反转单链表
+    public void reverse(HeroNode head) {
+        if (head.next == null || head.next.next == null) {
+            //表示链表为空，或者链表只有一个有效数据
+            return;
+        }
+        HeroNode cur = head.next;
+        HeroNode next = null;
+        HeroNode reverseNode = new HeroNode(0, "", "");
+
+        while (cur != null) {
+            next = cur.next;
+            cur.next = reverseNode.next;
+            reverseNode.next = cur;
+            cur = next;
+        }
+
+        head.next = reverseNode.next;
+
+    }
+
+    //逆序打印链表，在不破坏原链表的情况下
+    public void reversePrint(HeroNode head) {
+        if (head.next == null) {
+            return;
+        }
+        Stack<HeroNode> stack = new Stack<>();
+
+        HeroNode cur = head.next;
+        while (cur != null) {
+            stack.push(cur);
+            cur = cur.next;
+        }
+
+        while (stack.size() != 0) {
+            System.out.println(stack.pop());
+        }
+
+    }
+
+    //合并两个有序链表，变成一个
+    //并打印
+    public void merge(HeroNode h1, HeroNode h2) {
+        if (h1.next == null && h2.next == null) {
+            return;
+        }
+        HeroNode cur1 = h1.next;
+        HeroNode cur2 = h2.next;
+        HeroNode mergeHead = new HeroNode(0, "", "");
+        HeroNode temp = mergeHead;
+        while (cur1 != null && cur2 != null) {
+            if (cur1.no < cur2.no) {
+                temp.next = cur1;
+                cur1 = cur1.next;
+                temp = temp.next;
+            } else {
+                temp.next = cur2;
+                cur2 = cur2.next;
+                temp = temp.next;
+            }
+        }
+        if (cur1 == null) {
+            temp.next = cur2;
+        }
+        if (cur2 == null) {
+            temp.next = cur1;
+        }
+
+        HeroNode cur3 = mergeHead.next;
+        while (cur3 != null) {
+            System.out.println(cur3);
+            cur3 = cur3.next;
         }
 
     }
