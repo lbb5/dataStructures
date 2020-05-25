@@ -30,6 +30,12 @@ public class DoubleLinkedListDemo {
         System.out.println("-------------------");
         doubleLinkedList.list();
 
+        DoubleNode node5 =new DoubleNode(3,"彭红燃2","学习委员");
+
+        doubleLinkedList.update(node5);
+
+        System.out.println("-----------");
+        doubleLinkedList.list();
     }
 
 }
